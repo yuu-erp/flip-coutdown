@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MetaNode | Countdown</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./flipdown.css" />
+  </head>
+  <body>
+    <div class="example">
+      <div id="flipdown" class="flipdown flipdown__theme-light"></div>
+    </div>
+    <script src="./flipdown.min.js"></script>
+    <script>
+      // Ngày mục tiêu
+      document.addEventListener("DOMContentLoaded", () => {
+        const targetDate = new Date("2023-10-25T00:00:00").getTime() / 1000;
+        var twoDaysFromNow = new Date().getTime() / 1000 + 10;
+        // Set up FlipDown
+        var flipdown = new FlipDown(targetDate)
+
+          // Start the countdown
+          .start()
+
+          // Do something when the countdown ends
+          .ifEnded(() => {
+            document.querySelector(
+              "#flipdown"
+            ).innerHTML = `<div class="content-success">🎉 Đã tới sự kiện 🎉</div>`;
+            console.log("The countdown has ended!");
+          });
+
+        var ver = document.getElementById("ver");
+        ver.innerHTML = flipdown.version;
+      });
+    </script>
+  </body>
+</html>
